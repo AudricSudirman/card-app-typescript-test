@@ -11,12 +11,6 @@ afterEach(async () => {
   ]);
 });
 
-describe("server test", () => {
-  it("should assert 1 + 1 is 2", () => {
-    expect(1 + 1).toEqual(2);
-  });
-});
-
 describe("card api endpoints", () => {
   // Test Create
   it("create a todo card", async() => {
