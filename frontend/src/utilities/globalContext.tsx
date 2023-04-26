@@ -1,5 +1,5 @@
 import {createContext , useState, FC, ReactNode, useEffect} from 'react'
-import {Entry, EntryContextType} from '../@types/context'
+import {Entry, EntryContextType, Modal} from '../@types/context'
 import axios from 'axios'
 
 export const EntryContext = createContext<EntryContextType | null>(null);
@@ -43,3 +43,22 @@ export const EntryProvider: React.FC<{children : ReactNode}> = ({children}) => {
       )
 }
 
+export const ModalContext = createContext<Modal | null>(null);
+
+export const ModalProvider:  React.FC<{children : ReactNode}> = ({children}) => {
+	const [visibility, setVisibility] = useState(false);
+
+	const hideModal = () => {
+		setVisibility(false);
+	}
+
+	const showModal = () => {
+		setVisibility(true);
+	}
+
+	return (
+		<ModalContext.Provider value={{ visibility, hideModal, showModal}}>
+		{children}
+		</ModalContext.Provider>
+	)
+}
